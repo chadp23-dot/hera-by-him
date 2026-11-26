@@ -29,7 +29,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'Jost',system-ui,sans-serif;background:var(--wine-deep);color:var(--ivory);text-align:center}
+body{margin:0;padding-top:88px;font-family:'Jost',system-ui,sans-serif;background:var(--wine-deep);color:var(--ivory);text-align:center}
 /* CENTER JUSTIFICATION — standing rule: every section, heading, paragraph,
    button, card, list, image and caption is justified to the middle. */
 section,header,footer,div,p,h1,h2,h3,blockquote,cite,figcaption,summary,details,li,.stack-item,.q-list span,.lightbox .cap{text-align:center}
@@ -49,14 +49,20 @@ section{padding:68px 20px}
 .btn-ghost{background:transparent;border-color:var(--ivory);color:var(--ivory)}
 .btn-ghost:hover{background:var(--ivory);color:var(--wine-deep)}
 
-/* STICKY TOP BAR + NAV */
-.topbar{position:sticky;top:0;z-index:100;background:#22040d;color:var(--ivory);padding:10px 16px 0;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;box-shadow:0 3px 0 var(--gold),0 10px 24px rgba(0,0,0,.5)}
+/* FIXED TOP BAR + NAV — locked in place at the top while scrolling.
+   Body padding-top (88px, adjusted in the media queries below) equals the
+   bar height at each width so page content never slides underneath it. */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#22040d;color:var(--ivory);padding:10px 16px 0;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;box-shadow:0 3px 0 var(--gold),0 10px 24px rgba(0,0,0,.5)}
 .topbar-row{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;align-items:center;padding-bottom:8px}
 .topbar a{color:var(--gold-soft);text-decoration:none}
 .topnav{display:flex;justify-content:center;gap:2px;flex-wrap:wrap;border-top:1px solid #4a2430;padding:6px 0 8px}
 .topnav a{color:var(--ivory);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:10px 13px;min-height:40px;display:inline-flex;align-items:center;border-radius:999px}
 .topnav a:hover,.topnav a:focus-visible{color:var(--wine-deep);background:var(--gold);outline:none}
 section[id],header[id]{scroll-margin-top:118px}
+@media(max-width:760px){
+  body{padding-top:128px}
+  section[id],header[id]{scroll-margin-top:138px}
+}
 
 /* ============ 1 · NOTICE — FIRST SCREEN ============ */
 .hero{background:var(--wine-deep);padding:44px 20px 0;overflow:hidden}
@@ -237,8 +243,9 @@ footer{background:#22040d;border-top:3px solid var(--gold);padding:28px 20px 116
 .callbar .booklink{background:var(--gold);color:var(--wine-deep)}
 
 @media(max-width:560px){
+  body{padding-top:206px}
   section{padding:52px 16px}
-  section[id]{scroll-margin-top:150px}
+  section[id]{scroll-margin-top:216px}
   .topnav a{padding:10px 9px;font-size:10.5px}
   .question{padding:40px 16px}
   .question .wrap{padding:36px 20px;border-radius:24px}
@@ -252,6 +259,10 @@ footer{background:#22040d;border-top:3px solid var(--gold);padding:28px 20px 116
   .spot-photos{grid-template-columns:1fr;gap:12px}
   .spot-photos img{height:380px}
   .back-to-top{bottom:76px;right:12px;width:50px;height:50px}
+}
+@media(max-width:370px){
+  body{padding-top:232px}
+  section[id]{scroll-margin-top:242px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
